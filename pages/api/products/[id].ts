@@ -8,8 +8,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     method,
     query: { id },
+    cookies,
   } = req;
   // console.log(id + 'yeah we got it')
+  const token = cookies.token;
 
   if (method == "GET") {
     try {
@@ -20,6 +22,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json(err);
     }
   } else if (method == "PUT") {
+    if (!token || token !== process.env.TOKEN) {
+      return res.status(401).json("Not authenticated!");
+    }
     try {
       //   console.log(req.body);
       //   const newProduct = new Product(req.body);
@@ -31,6 +36,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json("there is some error occurs!\n" + err);
     }
   } else if (method === "DELETE") {
+    if (!token || token !== process.env.TOKEN) {
+      return res.status(401).json("Not authenticated!");
+    }
     try {
       await Product.findByIdAndDelete(id);
       res.status(200).json("product has been deleted");

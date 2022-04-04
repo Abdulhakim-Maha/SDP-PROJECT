@@ -7,6 +7,7 @@
   z-index: 999;
   display: flex;
   align-items: center;
+  justify-content: center;
   .wrapper {
     width: 500px;
     background-color: white;
@@ -25,15 +26,50 @@
         font-size: 14px;
         font-weight: 500;
       }
-	  .priceContainer{
-		  display: flex;
-		  justify-content: space-between;
-	  }
+      .inputSm {
+        width: 25%;
+      }
+      .extra {
+        display: flex;
+        justify-content: space-between;
+      }
+      .priceContainer {
+        display: flex;
+        justify-content: space-between;
+        .inputSm {
+          width: 25%;
+        }
+      }
       .input {
         border: none;
         border-bottom: 1px solid gray;
         outline: none;
       }
+    }
+    .extraItems {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      .extraItem {
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid tomato;
+        background-color: #fff;
+        color: tomato;
+        margin-right: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    .addButton{
+      width: 25%;
+      border:none;
+      background-color: teal;
+      color:white;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 5px 0;
+      align-self: flex-end;
     }
     .close {
       width: 30px;
