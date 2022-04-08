@@ -6,7 +6,7 @@ import style from "../../styles/Product.module.scss";
 import { ParsedUrlQuery } from "querystring";
 import PIZZA from "../../util/Pizza";
 import { useAppDispatch } from "../../redux/hook";
-import { addProduct ,reset} from "../../redux/cartSlice";
+import { addProduct, reset } from "../../redux/cartSlice";
 
 export interface extraOptions {
   _id: number;
@@ -48,7 +48,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
 
   const handleClick = () => {
     // console.log({...pizza,extras,price,quantity});
-    dispatch(addProduct({...pizza,extras,price,quantity}));
+    dispatch(addProduct({ ...pizza, extras, price, quantity }));
   };
 
   return (
@@ -60,7 +60,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
       </div>
       <div className={style.right}>
         <h1 className={style.titlt}>{pizza.title}</h1>
-        <span className={style.price}>${price}</span>
+        <span className={style.price}>{price} บาท</span>
         <p className={style.desc}>{pizza.desc}</p>
         <h3 className={style.choose}>Choose your size</h3>
         <div className={style.sizes}>
@@ -102,7 +102,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
             className={style.quantity}
           />
           <button className={style.button} onClick={handleClick}>
-            Add to Cart
+            เพิ่มใส่ตะกร้า
           </button>
         </div>
       </div>
