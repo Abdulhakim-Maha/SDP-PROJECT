@@ -10,9 +10,9 @@ enum CHOICE {
 const Featured = () => {
   const [index, setIndex] = useState<number>(0);
   const images: Array<string> = [
-    "/img/featured.png",
-    "/img/featured2.png",
-    "/img/featured3.png",
+    "/img/FC1w.png",
+    "/img/FC2w.png",
+    "/img/FC3w.png",
   ];
 
   const handleArrow = (c: CHOICE) => {
