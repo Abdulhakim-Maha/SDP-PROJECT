@@ -3,14 +3,14 @@ import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import PRODUST from "../../util/Pizza";
+import PRODUCT from "../../util/Chick";
 import { ORDER_V2 } from "../orders/[id]";
 
-const Index: React.FC<{ products: PRODUST[]; orders: ORDER_V2[] }> = ({
+const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   orders,
   products,
 }) => {
-  const [pizzaList, setPizzaList] = useState(products);
+  const [chickList, setChickList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
   const status: string[] = ["preparing", "on the way", "delivered"];
 
@@ -19,7 +19,7 @@ const Index: React.FC<{ products: PRODUST[]; orders: ORDER_V2[] }> = ({
       const res = await axios.delete(
         "http://localhost:3000/api/products/" + id
       );
-      setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
+      setChickList(chickList.filter((chick) => chick._id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +55,7 @@ const Index: React.FC<{ products: PRODUST[]; orders: ORDER_V2[] }> = ({
               <th>Action</th>
             </tr>
           </tbody>
-          {pizzaList.map((product) => {
+          {chickList.map((product) => {
             return (
               <tbody key={product._id}>
                 <tr className={styles.trTitle}>

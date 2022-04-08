@@ -152,13 +152,13 @@ const Cart = () => {
         <div className={styles.wrapper}>
           <h2 className={styles.title}>รายการสั่งซื้อ</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>${cart.total}
+            <b className={styles.totalTextTitle}>Subtotal:</b>{cart.total}  บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>$0.00
+            <b className={styles.totalTextTitle}>Discount:</b>0.00  บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>${cart.total}
+            <b className={styles.totalTextTitle}>Total:</b>{cart.total} บาท
           </div>
           {open ? (
             <div className={styles.paymentMethods}>

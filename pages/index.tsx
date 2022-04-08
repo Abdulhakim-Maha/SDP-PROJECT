@@ -2,15 +2,15 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 import Featured from "../components/Featured";
-import PizzaList from "../components/PizzaList";
+import PizzaList from "../components/ChickList";
 import styles from "../styles/Home.module.scss";
 import axios from "axios";
-import PIZZA from "../util/Pizza";
+import PIZZA from "../util/Chick";
 import { useState } from "react";
 import Add from "../components/Add";
 import AddButton from "../components/AddButton";
 
-const Home: React.FC<{ pizzaList: PIZZA[]; admin: boolean }> = (props) => {
+const Home: React.FC<{ chickList: PIZZA[]; admin: boolean }> = (props) => {
   const [close, setClose] = useState<boolean>(true);
   // console.log(props);
   return (
@@ -22,7 +22,7 @@ const Home: React.FC<{ pizzaList: PIZZA[]; admin: boolean }> = (props) => {
       </Head>
       <Featured />
       {props.admin && <AddButton setClose={setClose}/>}
-      <PizzaList pizzaList={props.pizzaList} />
+      <PizzaList chickList={props.chickList} />
       {!close && <Add setClose={setClose}/>}
     </div>
   );
@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // console.log(res.data);
   return {
     props: {
-      pizzaList: res.data,
+      chickList: res.data,
       admin,
     },
   };
