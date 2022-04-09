@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import style from "../styles/ChickCart.module.scss";
+import style from "../styles/ChickCard.module.scss";
 import CHICK from "../util/Chick";
 import Link from "next/link";
 
-const ChickCart: React.FC<{ chick: CHICK }> = ({ chick }) => {
+const ChickCard: React.FC<{ chick: CHICK }> = ({ chick }) => {
   return (
     <div className={style.container}>
       <Link href={`/product/${chick._id}`} passHref >
@@ -17,4 +17,4 @@ const ChickCart: React.FC<{ chick: CHICK }> = ({ chick }) => {
   );
 };
 
-export default ChickCart;
+export default ChickCard;
