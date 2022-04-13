@@ -21,6 +21,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     })
     res.status(200).json(order)
   } else if (method === "DELETE") {
+    try {
+      await Order.findByIdAndDelete(id);
+      res.status(200).json("product has been deleted");
+    } catch (error) {
+      res.status(500).json(error);
+    }
   }
 };
 

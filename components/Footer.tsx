@@ -10,12 +10,16 @@ const Footer = () => {
       </div>
       <div className={style.item}>
         <div className={style.card}>
-          <h2 className={style.motto}>
-            OH YES, WE DID THE LAMA PIZZA, WELL BAKED SLICE OF PIZZA.
-          </h2>
+          <h3 className={style.motto}>
+          สำหรับท่านที่เดินผ่านไปผ่านมา 
+          <br/>วันนี้ไก่ทอด 4.0 ได้มาบริการท่านพ่อแม่พี่น้องกันอีกแล้วนะครับ 
+          <br/>อากาศร้อนๆอย่างนี้นะครับ ไก่ทอดสักน่องชื่นใจ 
+          <br/>แม้อากาศไม่ร้อนก็ทานกันได้นะครับ
+          
+          </h3>
         </div>
         <div className={style.card}>
-          <h1 className={style.title}>FIND OUR RESTAURANTS</h1>
+          <h1 className={style.title}>ที่อยู่ เบอร์โทร</h1>
           <p className={style.text}>
             1654 R. Don Road #304.
             <br /> NewYork, 85022
@@ -38,7 +42,7 @@ const Footer = () => {
           </p>
         </div>
         <div className={style.card}>
-          <h1 className={style.title}>WORKING HOURS</h1>
+          <h1 className={style.title}>เวลาเปิด - ปิด</h1>
           <p className={style.text}>
             MONDAY UNTIL FRIDAY
             <br /> 9:00 – 22:00

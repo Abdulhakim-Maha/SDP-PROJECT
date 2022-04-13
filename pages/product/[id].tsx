@@ -4,9 +4,9 @@ import { GetServerSideProps } from "next";
 import React, { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
 import style from "../../styles/Product.module.scss";
 import { ParsedUrlQuery } from "querystring";
-import PIZZA from "../../util/Pizza";
+import CHICK from "../../util/Chick";
 import { useAppDispatch } from "../../redux/hook";
-import { addProduct ,reset} from "../../redux/cartSlice";
+import { addProduct, reset } from "../../redux/cartSlice";
 
 export interface extraOptions {
   _id: number;
@@ -14,10 +14,10 @@ export interface extraOptions {
   price: number;
 }
 
-const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
-  // console.log(pizza);
+const ID: React.FC<{ chick: CHICK }> = ({ chick }) => {
+  // console.log(chick);
   const [size, setSize] = useState<number>(0);
-  const [price, setPrice] = useState<number>(pizza.prices[0]);
+  const [price, setPrice] = useState<number>(chick.prices[0]);
   const [quantity, setQuantity] = useState<number>(1);
   const [extras, setExtras] = useState<extraOptions[]>([]);
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
   };
 
   const handleSize = (idx: number) => {
-    const diff = pizza.prices[idx] - pizza.prices[size];
+    const diff = chick.prices[idx] - chick.prices[size];
     setSize(idx);
     changePrice(diff);
   };
@@ -47,21 +47,21 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
   };
 
   const handleClick = () => {
-    // console.log({...pizza,extras,price,quantity});
-    dispatch(addProduct({...pizza,extras,price,quantity}));
+    // console.log({...chick,extras,price,quantity});
+    dispatch(addProduct({ ...chick, extras, price, quantity }));
   };
 
   return (
     <div className={style.container}>
       <div className={style.left}>
         <div className={style.imgContainer}>
-          <Image src={pizza.img} layout="fill" objectFit="contain" />
+          <Image src={chick.img} layout="fill" objectFit="contain" />
         </div>
       </div>
       <div className={style.right}>
-        <h1 className={style.titlt}>{pizza.title}</h1>
-        <span className={style.price}>${price}</span>
-        <p className={style.desc}>{pizza.desc}</p>
+        <h1 className={style.titlt}>{chick.title}</h1>
+        <span className={style.price}>{price} บาท</span>
+        <p className={style.desc}>{chick.desc}</p>
         <h3 className={style.choose}>Choose your size</h3>
         <div className={style.sizes}>
           <div className={style.size} onClick={() => handleSize(0)}>
@@ -79,7 +79,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
         </div>
         <h3 className={style.choose}>Choose additional ingredients</h3>
         <div className={style.ingredients}>
-          {pizza.extraOptions.map((option) => {
+          {chick.extraOptions.map((option) => {
             return (
               <div className={style.option} key={option._id}>
                 <input
@@ -102,7 +102,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
             className={style.quantity}
           />
           <button className={style.button} onClick={handleClick}>
-            Add to Cart
+            เพิ่มใส่ตะกร้า
           </button>
         </div>
       </div>
@@ -121,7 +121,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await axios.get(`http://localhost:3000/api/products/${id}`);
   return {
     props: {
-      pizza: res.data,
+      chick: res.data,
     },
   };
 };

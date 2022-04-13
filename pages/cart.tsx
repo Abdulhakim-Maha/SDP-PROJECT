@@ -99,12 +99,12 @@ const Cart = () => {
         <table className={styles.table}>
           <tbody>
             <tr className={styles.trTitle}>
-              <th>Product</th>
-              <th>Name</th>
+              <th>สินค้า</th>
+              <th>ชื่อ</th>
               <th>Extras</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
+              <th>ราคา</th>
+              <th>ปริมาณ</th>
+              <th>รวม</th>
             </tr>
           </tbody>
           <tbody>
@@ -150,15 +150,15 @@ const Cart = () => {
       </div>
       <div className={styles.right}>
         <div className={styles.wrapper}>
-          <h2 className={styles.title}>CART TOTAL</h2>
+          <h2 className={styles.title}>รายการสั่งซื้อ</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>${cart.total}
+            <b className={styles.totalTextTitle}>Subtotal:</b>{cart.total}  บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>$0.00
+            <b className={styles.totalTextTitle}>Discount:</b>0.00  บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>${cart.total}
+            <b className={styles.totalTextTitle}>Total:</b>{cart.total} บาท
           </div>
           {open ? (
             <div className={styles.paymentMethods}>
@@ -166,7 +166,7 @@ const Cart = () => {
                 className={styles.payButton}
                 onClick={() => setCash(true)}
               >
-                CASH ON DELIVERY
+                ชำระเงินปลายทาง
               </button>
               <PayPalScriptProvider
                 options={{
@@ -181,7 +181,7 @@ const Cart = () => {
             </div>
           ) : (
             <button onClick={() => setOpen(true)} className={styles.button}>
-              CHECKOUT NOW!
+              สั่งซื้อ
             </button>
           )}
         </div>

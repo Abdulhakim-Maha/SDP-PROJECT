@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { extraOptions } from "../pages/product/[id]";
-import PIZZA from "../util/Pizza";
+import PIZZA from "../util/Chick";
 
 interface Product extends PIZZA {
   price: number;
