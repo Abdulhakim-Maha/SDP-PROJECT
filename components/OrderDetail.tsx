@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { useAppSelector } from "../redux/hook";
 import styles from "../styles/OrderDetail.module.scss";
 
 const OrderDetail: React.FC<{
   total: number;
   createOrder: Function;
-}> = ({ total, createOrder }) => {
+}> = ({ total, createOrder}) => {
+  const cart = useAppSelector((state) => state.cart);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [phonNumber, setPhoneNumber] = useState<string>("");
@@ -18,32 +20,32 @@ const OrderDetail: React.FC<{
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>You will pay $12 after delivery</h1>
+        <h2 className={styles.title}>ยอดที่ต้องชำระปลายทาง {cart.total} บาท</h2>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            First Name
+            ชื่อ
           </label>
           <input
             type="text"
-            placeholder="John"
+            placeholder="สมชาย"
             className={styles.input}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            Last Name
+            นามสกุล
           </label>
           <input
             type="text"
-            placeholder="Doe"
+            placeholder="ขายของ"
             className={styles.input}
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            Phone Number
+            เบอร์ติดต่อ
           </label>
           <input
             type="text"
@@ -54,11 +56,11 @@ const OrderDetail: React.FC<{
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            Address
+            ที่อยู่
           </label>
           <textarea
             rows={5}
-            placeholder="Lardkrabang St. 562 Bangkok"
+            placeholder="ลาดกระบัง"
             className={styles.textarea}
             onChange={(e) => setAddress(e.target.value)}
           ></textarea>

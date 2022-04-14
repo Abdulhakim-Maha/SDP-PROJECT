@@ -114,7 +114,7 @@ const Cart = () => {
                   <td>
                     <div className={styles.imgContainer}>
                       <Image
-                        src="/img/pizza.png"
+                        src={product.img}
                         layout="fill"
                         objectFit="cover"
                         alt=""
