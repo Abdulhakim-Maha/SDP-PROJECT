@@ -2,7 +2,7 @@ $main-color: #d1411e;
 
 .container {
   height: 100px;
-  padding: 0px 50px;
+  padding: 0px 25px;
   background-color: $main-color;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@ $main-color: #d1411e;
 
   .item {
     flex: 1;
-    display: flex;
+    display: inline-flex;
     align-items: center;
 
     .callButton {
@@ -39,7 +39,7 @@ $main-color: #d1411e;
     }
 
     .list {
-      padding: 0;
+      padding: 10;
       display: flex;
       align-items: center;
       list-style: none;
@@ -49,6 +49,10 @@ $main-color: #d1411e;
         cursor: pointer;
         margin: 20px;
         font-weight: 500;
+        transition: font-size 0.1s ease-out 100ms
+      }
+      .listItem:hover{
+        font-size: 25px;
       }
     }
     .cart {

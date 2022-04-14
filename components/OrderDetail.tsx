@@ -4,21 +4,30 @@ import styles from "../styles/OrderDetail.module.scss";
 const OrderDetail: React.FC<{
   total: number;
   createOrder: Function;
-}> = ({ total, createOrder }) => {
+  setCash: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ total, createOrder, setCash }) => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [phonNumber, setPhoneNumber] = useState<string>("");
   const [address, setAddress] = useState<string>("");
+  const [canOrder, setCanOrder] = useState<boolean>(false);
+
+
+  //after focused
+  const [firtFocus, setFirstFocus] = useState<boolean>(false)
 
   const handleClick = () => {
     const customer = firstName + lastName;
-    createOrder({ customer, address, total, method: 0 });
+    createOrder({ customer, address, total, phonNumber, method: 0 });
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>You will pay $12 after delivery</h1>
+        <button onClick={(e) => setCash(false)} className={styles.close}>
+          x
+        </button>
+        <h1 className={styles.title}>ค่าส่ง 10 บาท</h1>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
             First Name
@@ -26,9 +35,13 @@ const OrderDetail: React.FC<{
           <input
             type="text"
             placeholder="John"
+            pattern="[a-zA-Zก-ฮ]{3,10}"
             className={styles.input}
             onChange={(e) => setFirstName(e.target.value)}
+            onBlur={(e) => setFirstFocus(true)}
+            data-firstFocused={firtFocus.toString()}
           />
+          <span>ชื่อต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 10</span>
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
@@ -63,7 +76,11 @@ const OrderDetail: React.FC<{
             onChange={(e) => setAddress(e.target.value)}
           ></textarea>
         </div>
-        <button className={styles.button} onClick={handleClick}>
+        <button
+          className={styles.button}
+          disabled={canOrder}
+          onClick={handleClick}
+        >
           Order
         </button>
       </div>

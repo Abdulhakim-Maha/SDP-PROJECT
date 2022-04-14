@@ -13,21 +13,23 @@ const Navbar = () => {
           <Image src={"/img/telephone.png"} width={"32"} height={"32"} alt="" />
         </div>
         <div className={style.texts}>
-          <div className={style.text}>order now</div>
+          <div className={style.text}>สั่งเลย !</div>
           <div className={style.text}>012 345 678</div>
         </div>
       </div>
       <div className={style.item}>
         <ul className={style.list}>
           <Link href={'/'}>
-            <li className={style.listItem}>Homepage</li>
+            <li className={style.listItem}>หน้าหลัก</li>
           </Link>
-          <li className={style.listItem}>Products</li>
-          <li className={style.listItem}>Menu</li>
-          <Image src={"/img/logo.png"} alt="" width={"160"} height={"96"} />
-          <li className={style.listItem}>Events</li>
-          <li className={style.listItem}>Blog</li>
-          <li className={style.listItem}>Contact</li>
+          <Link href={'/menu'}>
+            <li className={style.listItem}>ไก่ทอด</li>
+          </Link>
+          <li className={style.listItem}>(อะไรสักอย่าง)</li>
+          <Image src={"/img/FC-logo.png"} alt="" width={"150"} height={"150"} />
+          <li className={style.listItem}>อีเว้นท์</li>
+          <li className={style.listItem}>บล็อก</li>
+          <li className={style.listItem}>ติดต่อพวกเรา</li>
         </ul>
       </div>
       <Link href={"/cart"}>

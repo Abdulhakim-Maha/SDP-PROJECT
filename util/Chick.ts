@@ -1,4 +1,4 @@
-export default interface Pizza {
+export default interface Chick {
   title: string;
   prices: number[];
   _id: number;
