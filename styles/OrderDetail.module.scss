@@ -41,14 +41,36 @@
     input {
       padding: 15px;
       outline: none;
-      &:invalid[data-firstFocused="true"] {
+      &:invalid[data-firstfocused="true"] {
         border: 1px solid red;
       }
-      &:invalid[data-firstFocused="true"] ~ span {
+      &:invalid[data-firstfocused="true"] ~ span.first {
+        display: block;
+      }
+      &:invalid[data-lastfocused="true"] {
+        border: 1px solid red;
+      }
+      &:invalid[data-lastfocused="true"] ~ span.last {
+        display: block;
+      }
+      &:invalid[data-phonefocused="true"] {
+        border: 1px solid red;
+      }
+      &:invalid[data-phonefocused="true"] ~ span.phone {
         display: block;
       }
     }
-    span {
+    .first {
+      margin-top: 1px;
+      color: red;
+      display: none;
+    }
+    .last {
+      margin-top: 1px;
+      color: red;
+      display: none;
+    }
+    .phone {
       margin-top: 1px;
       color: red;
       display: none;
@@ -62,7 +84,10 @@
       flex-direction: column;
       width: 100%;
       margin-bottom: 15px;
-
+      .textarea{
+        padding: 10px;
+        outline: none;
+      }
       .label {
         margin-bottom: 10px;
       }
