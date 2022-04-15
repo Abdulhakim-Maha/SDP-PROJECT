@@ -38,9 +38,24 @@
         color: black;
       }
     }
-    input {
+    .input {
       padding: 15px;
       outline: none;
+      border-radius: 2px;
+      border: 1px solid grey;
+      &.invalid {
+        border-color: red;
+        background-color: rgb(252, 187, 187);
+      }
+
+      &:focus {
+        background-color: rgb(166, 197, 197);
+        outline: none;
+        border-color: rgb(3, 81, 81);
+      }
+    }
+    .error {
+      color: red;
     }
 
     .title {
@@ -54,6 +69,11 @@
       .textarea {
         padding: 10px;
         outline: none;
+        &:focus {
+          background-color: rgb(166, 197, 197);
+          outline: none;
+          border-color: rgb(3, 81, 81);
+        }
       }
       .label {
         margin-bottom: 10px;
