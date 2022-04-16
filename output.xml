@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.2 on win32)" generated="20220416 17:19:58.598" rpa="false" schemaversion="3">
+<suite id="s1" name="Test-Form" source="D:\SDP-test\test-form.robot">
+<test id="s1-t1" name="T0001 Open-browser and make order" line="17">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url_homepage}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220416 17:19:58.780" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/'.</msg>
+<status status="PASS" starttime="20220416 17:19:58.780" endtime="20220416 17:20:00.729"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${order_menu_class}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220416 17:20:00.730" level="INFO">Clicking element '//*[@class="order_menu"]'.</msg>
+<status status="PASS" starttime="20220416 17:20:00.729" endtime="20220416 17:20:00.796"/>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>Product</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220416 17:20:01.024" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-13.png"&gt;&lt;img src="selenium-screenshot-13.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220416 17:20:01.025" level="FAIL">Title should have been 'Product' but was 'Create Next App'.</msg>
+<status status="FAIL" starttime="20220416 17:20:00.797" endtime="20220416 17:20:01.026"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220416 17:20:01.028" endtime="20220416 17:20:03.157"/>
+</kw>
+<status status="FAIL" starttime="20220416 17:19:58.779" endtime="20220416 17:20:03.158">Title should have been 'Product' but was 'Create Next App'.</status>
+</test>
+<status status="FAIL" starttime="20220416 17:19:58.600" endtime="20220416 17:20:03.160"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Test-Form">Test-Form</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
