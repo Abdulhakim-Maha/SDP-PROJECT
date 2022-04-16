@@ -19,7 +19,7 @@ const ChickList: React.FC<{ chickList: Array<CHICK> }> = ({ chickList }) => {
       </p> */}
       <div className={style.wrapper}>
         {chickList.slice(1).map((chick) => {
-          console.log(chick)
+          // console.log(chick)
           return <ChickCard key={chick._id} chick={chick} />;
         })}
       </div>

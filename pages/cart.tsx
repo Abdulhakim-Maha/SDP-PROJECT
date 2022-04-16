@@ -95,6 +95,7 @@ const Cart = () => {
 
   return (
     <div className={styles.container}>
+      <title>Cart</title>
       <div className={styles.left}>
         <table className={styles.table}>
           <tbody>
@@ -163,6 +164,7 @@ const Cart = () => {
           {open ? (
             <div className={styles.paymentMethods}>
               <button
+                id="oncash"
                 className={styles.payButton}
                 onClick={() => setCash(true)}
               >
@@ -180,7 +182,7 @@ const Cart = () => {
               </PayPalScriptProvider>
             </div>
           ) : (
-            <button onClick={() => setOpen(true)} className={styles.button}>
+            <button id="buy" onClick={() => setOpen(true)} className={styles.button}>
               สั่งซื้อ
             </button>
           )}
