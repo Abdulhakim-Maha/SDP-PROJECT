@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Cart.module.scss";
+import Head from "next/head";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -95,6 +96,9 @@ const Cart = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Cart</title>
+      </Head>
       <div className={styles.left}>
         <table className={styles.table}>
           <tbody>
@@ -180,7 +184,7 @@ const Cart = () => {
               </PayPalScriptProvider>
             </div>
           ) : (
-            <button onClick={() => setOpen(true)} className={styles.button}>
+            <button onClick={() => setOpen(true)} className={styles.button} >
               สั่งซื้อ
             </button>
           )}
