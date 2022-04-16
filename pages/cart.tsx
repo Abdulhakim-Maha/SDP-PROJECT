@@ -96,9 +96,7 @@ const Cart = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Cart</title>
-      </Head>
+      <title>Cart</title>
       <div className={styles.left}>
         <table className={styles.table}>
           <tbody>
@@ -118,7 +116,7 @@ const Cart = () => {
                   <td>
                     <div className={styles.imgContainer}>
                       <Image
-                        src="/img/pizza.png"
+                        src={product.img}
                         layout="fill"
                         objectFit="cover"
                         alt=""
@@ -167,6 +165,7 @@ const Cart = () => {
           {open ? (
             <div className={styles.paymentMethods}>
               <button
+                id="oncash"
                 className={styles.payButton}
                 onClick={() => setCash(true)}
               >
@@ -184,7 +183,11 @@ const Cart = () => {
               </PayPalScriptProvider>
             </div>
           ) : (
+<<<<<<< HEAD
             <button onClick={() => setOpen(true)} className={styles.button} >
+=======
+            <button id="buy" onClick={() => setOpen(true)} className={styles.button}>
+>>>>>>> 57dab4deb85abccabe20f89f34c1a2dff5b5c49f
               สั่งซื้อ
             </button>
           )}

@@ -25,7 +25,7 @@ const Footer = () => {
             <br /> NewYork, 85022
             <br /> (602) 867-1010
           </p>
-          <p className={style.text}>
+          {/* <p className={style.text}>
             2356 K. Laquie Rd #235.
             <br /> NewYork, 85022
             <br /> (602) 867-1011
@@ -39,7 +39,7 @@ const Footer = () => {
             1614 W. Caroll St #125.
             <br /> NewYork, 85022
             <br /> (602) 867-1013
-          </p>
+          </p> */}
         </div>
         <div className={style.card}>
           <h1 className={style.title}>เวลาเปิด - ปิด</h1>

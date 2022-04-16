@@ -82,9 +82,10 @@ const OrderDetail: React.FC<{
         <h1 className={styles.title}>ค่าส่ง 10 บาท</h1>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            First Name
+            ชื่อ
           </label>
           <input
+            id="name"
             type="text"
             placeholder="John"
             className={firstnameInputClass}
@@ -100,9 +101,10 @@ const OrderDetail: React.FC<{
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            Last Name
+            นามสกุล
           </label>
           <input
+            id="surname"
             type="text"
             placeholder="Doe"
             className={lastnameInputClass}
@@ -118,9 +120,10 @@ const OrderDetail: React.FC<{
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            Phone Number
+            เบอร์ติดต่อ
           </label>
           <input
+            id="tel"
             type="text"
             placeholder="+66 123456789"
             className={phoneInputClass}
@@ -136,9 +139,10 @@ const OrderDetail: React.FC<{
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
-            Address
+            ที่อยู่
           </label>
           <textarea
+            id="addr"
             rows={5}
             placeholder="Lardkrabang St. 562 Bangkok"
             className={addressInputClass}
@@ -153,7 +157,7 @@ const OrderDetail: React.FC<{
             </span>
           )}
         </div>
-        <button type="submit" disabled={!formIsValid} className={styles.button}>
+        <button id='order' type="submit" disabled={!formIsValid} className={styles.button}>
           Order
         </button>
       </form>
