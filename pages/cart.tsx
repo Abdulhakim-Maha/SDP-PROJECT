@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Cart.module.scss";
+import Head from "next/head";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -155,13 +156,15 @@ const Cart = () => {
         <div className={styles.wrapper}>
           <h2 className={styles.title}>รายการสั่งซื้อ</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>{cart.total}  บาท
+            <b className={styles.totalTextTitle}>Subtotal:</b>
+            {cart.total} บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>0.00  บาท
+            <b className={styles.totalTextTitle}>Discount:</b>0.00 บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>{cart.total} บาท
+            <b className={styles.totalTextTitle}>Total:</b>
+            {cart.total} บาท
           </div>
           {open ? (
             <div className={styles.paymentMethods}>
@@ -184,13 +187,23 @@ const Cart = () => {
               </PayPalScriptProvider>
             </div>
           ) : (
-            <button id="buy" onClick={() => setOpen(true)} className={styles.button}>
+            <button
+              id="buy"
+              onClick={() => setOpen(true)}
+              className={styles.button}
+            >
               สั่งซื้อ
             </button>
           )}
         </div>
       </div>
-      {cash && <OrderDetail setCash={setCash} total={cart.total} createOrder={createOrder} />}
+      {cash && (
+        <OrderDetail
+          setCash={setCash}
+          total={cart.total}
+          createOrder={createOrder}
+        />
+      )}
     </div>
   );
 };

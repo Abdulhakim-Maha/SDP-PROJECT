@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Head from "next/head";
 import styles from "../../styles/Order.module.scss";
 import { ParsedUrlQuery } from "querystring";
 import { GetServerSideProps } from "next";
@@ -11,7 +12,6 @@ export interface ORDER_V2 extends ORDER {
 }
 
 const Order: React.FC<{ order: ORDER_V2 }> = ({ order }) => {
-
   let status: number = order.status;
   // console.log("id "+order._id)
 
@@ -34,12 +34,10 @@ const Order: React.FC<{ order: ORDER_V2 }> = ({ order }) => {
     else if (index - status > 1) return styles.undone;
   };
 
-  setTimeout(function() { 
-    try{
-      location.reload()
-    }catch(err){
-
-    };
+  setTimeout(function () {
+    try {
+      location.reload();
+    } catch (err) {}
   }, 300000);
 
   return (
