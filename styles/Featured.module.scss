@@ -2,7 +2,10 @@
 
 .container {
   height: calc(100vh - 100px);
-  background-color: $main-color;
+  // background-color: $main-color;
+  background-color: white;
+  background-image: -webkit-linear-gradient( 45deg, white 0%, white 35%, $main-color 35%, $main-color 35%);
+  background-image: linear-gradient( 45deg, white 0%, white 35%, $main-color 35%, $main-color 35%);
   position: relative;
   z-index: 10;
   overflow-x: hidden;
