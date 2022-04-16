@@ -1,74 +1,166 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { useAppSelector } from "../redux/hook";
+import React, { FormEvent } from "react";
 import styles from "../styles/OrderDetail.module.scss";
+import useInput from "../hook/use-input";
 
 const OrderDetail: React.FC<{
   total: number;
   createOrder: Function;
-}> = ({ total, createOrder}) => {
-  const cart = useAppSelector((state) => state.cart);
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [phonNumber, setPhoneNumber] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
+  setCash: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ total, createOrder, setCash }) => {
+  const name_regex = new RegExp("[a-zA-Zก-ํ]{3,}");
+  const phone_regex = new RegExp("[0-9]{9,10}");
+  const add_regex = new RegExp("[a-zA-Zก-ํ0-9]{3,}");
 
-  const handleClick = () => {
-    const customer = firstName + lastName;
-    createOrder({ customer, address, total, method: 0 });
+  const {
+    value: enteredFirstname,
+    hasError: firstnameHasError,
+    isValid: enteredFirstnameIsValid,
+    valueBlurHandler: firstnameBlurHandler,
+    valueChangeHandler: firstnameChangeHandler,
+  } = useInput((value) => name_regex.test(value.trim()) && value.length <= 10);
+
+  const {
+    value: enterredLastname,
+    hasError: lastnameHasError,
+    isValid: enterredLastnameIsValid,
+    valueBlurHandler: lastnameBlurHandler,
+    valueChangeHandler: lastnameChangeHandler,
+  } = useInput((value) => name_regex.test(value.trim()) && value.length <= 10);
+
+  const {
+    value: enteredPhone,
+    hasError: phoneHasError,
+    isValid: enteredPhoneIsValid,
+    valueBlurHandler: phoneBlurHandler,
+    valueChangeHandler: phoneChangeHandler,
+  } = useInput((value) => phone_regex.test(value.trim()) && value.length <= 10);
+
+  const {
+    value: enteredAddress,
+    hasError: addressHasError,
+    isValid: enteredAddressIsValid,
+    valueBlurHandler: addressBlurHandler,
+    valueChangeHandler: addressChangeHandler,
+  } = useInput((value) => add_regex.test(value.trim()));
+
+  const firstnameInputClass = firstnameHasError
+    ? `${styles.input} ${styles.invalid}`
+    : styles.input;
+  const lastnameInputClass = lastnameHasError
+    ? `${styles.input} ${styles.invalid}`
+    : styles.input;
+  const phoneInputClass = phoneHasError
+    ? `${styles.input} ${styles.invalid}`
+    : styles.input;
+  const addressInputClass = addressHasError
+    ? `${styles.textarea} ${styles.invalid}`
+    : styles.textarea;
+
+  let formIsValid = false;
+  if (
+    enteredFirstnameIsValid &&
+    enterredLastnameIsValid &&
+    enteredPhoneIsValid &&
+    enteredAddressIsValid
+  ) {
+    formIsValid = true;
+  }
+
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    const customer = enteredFirstname + enterredLastname;
+    console.log(customer, enteredPhone, enteredAddress);
+    createOrder({ customer, address: enteredAddress, total, method: 0 });
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <h2 className={styles.title}>ยอดที่ต้องชำระปลายทาง {cart.total} บาท</h2>
+      <form onSubmit={submitHandler} className={styles.wrapper}>
+        <button onClick={(e) => setCash(false)} className={styles.close}>
+          x
+        </button>
+        <h1 className={styles.title}>ค่าส่ง 10 บาท</h1>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
             ชื่อ
           </label>
           <input
+            id="name"
             type="text"
-            placeholder="สมชาย"
-            className={styles.input}
-            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="John"
+            className={firstnameInputClass}
+            value={enteredFirstname}
+            onChange={firstnameChangeHandler}
+            onBlur={firstnameBlurHandler}
           />
+          {firstnameHasError && (
+            <span className={styles.error}>
+              ชื่อต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 10
+            </span>
+          )}
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
             นามสกุล
           </label>
           <input
+            id="surname"
             type="text"
-            placeholder="ขายของ"
-            className={styles.input}
-            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Doe"
+            className={lastnameInputClass}
+            value={enterredLastname}
+            onBlur={lastnameBlurHandler}
+            onChange={lastnameChangeHandler}
           />
+          {lastnameHasError && (
+            <span className={styles.error}>
+              นามสกุลต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 10
+            </span>
+          )}
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
             เบอร์ติดต่อ
           </label>
           <input
+            id="tel"
             type="text"
             placeholder="+66 123456789"
-            className={styles.input}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            className={phoneInputClass}
+            value={enteredPhone}
+            onChange={phoneChangeHandler}
+            onBlur={phoneBlurHandler}
           />
+          {phoneHasError && (
+            <span className={styles.error}>
+              ใส่เป็นตัวเลขอารบิกจำนวน 9 หรือ 10
+            </span>
+          )}
         </div>
         <div className={styles.item}>
           <label htmlFor="" className={styles.label}>
             ที่อยู่
           </label>
           <textarea
+            id="addr"
             rows={5}
-            placeholder="ลาดกระบัง"
-            className={styles.textarea}
-            onChange={(e) => setAddress(e.target.value)}
-          ></textarea>
+            placeholder="Lardkrabang St. 562 Bangkok"
+            className={addressInputClass}
+            value={enteredAddress}
+            onChange={addressChangeHandler}
+            onBlur={addressBlurHandler}
+          />
+          {addressHasError && (
+            <span className={styles.error}>
+              ที่อยู่ต้องเป็นตัวเลขกับตัวอักษร ไม่เป็นตัวตัวอักษรพิเศษ
+              และมากกว่า 3 ขึ้นไป
+            </span>
+          )}
         </div>
-        <button className={styles.button} onClick={handleClick}>
+        <button id='order' type="submit" disabled={!formIsValid} className={styles.button}>
           Order
         </button>
-      </div>
+      </form>
     </div>
   );
 };
