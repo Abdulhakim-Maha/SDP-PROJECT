@@ -17,7 +17,12 @@ const OrderDetail: React.FC<{
     isValid: enteredFirstnameIsValid,
     valueBlurHandler: firstnameBlurHandler,
     valueChangeHandler: firstnameChangeHandler,
-  } = useInput((value) => name_regex.test(value.trim()) && value.length <= 10);
+  } = useInput(
+    (value) =>
+      name_regex.test(value.trim()) &&
+      value.length <= 20 &&
+      !/\d/.test(value.trim())
+  );
 
   const {
     value: enterredLastname,
@@ -25,7 +30,12 @@ const OrderDetail: React.FC<{
     isValid: enterredLastnameIsValid,
     valueBlurHandler: lastnameBlurHandler,
     valueChangeHandler: lastnameChangeHandler,
-  } = useInput((value) => name_regex.test(value.trim()) && value.length <= 10);
+  } = useInput(
+    (value) =>
+      name_regex.test(value.trim()) &&
+      value.length <= 20 &&
+      !/\d/.test(value.trim())
+  );
 
   const {
     value: enteredPhone,
@@ -95,7 +105,7 @@ const OrderDetail: React.FC<{
           />
           {firstnameHasError && (
             <span className={styles.error}>
-              ชื่อต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 10
+              ชื่อต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 20
             </span>
           )}
         </div>
@@ -114,7 +124,7 @@ const OrderDetail: React.FC<{
           />
           {lastnameHasError && (
             <span className={styles.error}>
-              นามสกุลต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 10
+              นามสกุลต้องเป็นภาษาอังกฤษหรือไทย และมีจำนวน 3 ถึง 20
             </span>
           )}
         </div>
@@ -152,12 +162,17 @@ const OrderDetail: React.FC<{
           />
           {addressHasError && (
             <span className={styles.error}>
-              ที่อยู่ต้องเป็นตัวเลขกับตัวอักษร ไม่เป็นตัวตัวอักษรพิเศษ
+              ที่อยู่ต้องเป็นตัวเลขกับตัวอักษร ไม่เป็นตัวอักษรพิเศษ
               และมากกว่า 3 ขึ้นไป
             </span>
           )}
         </div>
-        <button id='order' type="submit" disabled={!formIsValid} className={styles.button}>
+        <button
+          id="order"
+          type="submit"
+          disabled={!formIsValid}
+          className={styles.button}
+        >
           Order
         </button>
       </form>
