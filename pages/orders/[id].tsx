@@ -42,9 +42,9 @@ const Order: React.FC<{ order: ORDER_V2 }> = ({ order }) => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Order</title>
-      </Head>
+      <head>
+      <title>Order</title>
+      </head>
       <div className={styles.left}>
         <div className={styles.row}>
           <table className={styles.table}>

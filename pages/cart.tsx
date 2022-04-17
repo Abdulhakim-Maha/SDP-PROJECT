@@ -96,9 +96,9 @@ const Cart = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Cart</title>
-      </Head>
+      <head>
+      <title>Cart</title>
+      </head>
       <div className={styles.left}>
         <table className={styles.table}>
           <tbody>
