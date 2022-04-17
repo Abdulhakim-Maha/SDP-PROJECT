@@ -4,7 +4,7 @@ import ChickCard from "./ChickCard";
 import CHICK from '../util/Chick'
 
 const ChickList: React.FC<{ chickList: Array<CHICK> }> = ({ chickList }) => {
-  console.log(chickList);
+  // console.log(chickList);
   return (
     <div className={style.container}>
       {/* <h1 className={style.title}>ไก่ทอด ที่อร่อยที่สุด</h1>
@@ -18,7 +18,8 @@ const ChickList: React.FC<{ chickList: Array<CHICK> }> = ({ chickList }) => {
       <br/>โอกาศหน้าอย่าลืมนะครับ ไก่ทอดแท้ๆที่เราทำจากยางไก่ทอดจริงๆนะครับ
       </p> */}
       <div className={style.wrapper}>
-        {chickList.map((chick) => {
+        {chickList.slice(0,3).map((chick) => {
+          // console.log(chick)
           return <ChickCard key={chick._id} chick={chick} />;
         })}
       </div>

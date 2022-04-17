@@ -25,11 +25,11 @@ const Navbar = () => {
           <Link href={'/menu'}>
             <li className={style.listItem}>ไก่ทอด</li>
           </Link>
-          <li className={style.listItem}>(อะไรสักอย่าง)</li>
           <Image src={"/img/FC-logo.png"} alt="" width={"150"} height={"150"} />
-          <li className={style.listItem}>อีเว้นท์</li>
           <li className={style.listItem}>บล็อก</li>
-          <li className={style.listItem}>ติดต่อพวกเรา</li>
+          <Link href={'/aboutus'}>
+            <li className={style.listItem}>ติดต่อพวกเรา</li>
+          </Link>
         </ul>
       </div>
       <Link href={"/cart"}>

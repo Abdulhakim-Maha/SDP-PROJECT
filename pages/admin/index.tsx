@@ -14,7 +14,6 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   const [orderList, setOrderList] = useState(orders);
   const status: string[] = ["preparing", "on the way", "delivered"];
 
-
   const handleDelete = async (id: number) => {
     try {
       const res = await axios.delete(
@@ -29,18 +28,30 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   const handleStatus = async (id: number) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
-    if (item.status > 3) {
-      item.status = 2
-    }
     try {
+      let updatedStatus = 0;
+      if (currentStatus < 2) {
+        updatedStatus = currentStatus + 1;
+      } else {
+        updatedStatus = 0;
+      }
       const res = await axios.put("http://localhost:3000/api/orders/" + id, {
-        status: currentStatus + 1,
+        status: updatedStatus,
       });
       setOrderList([
         res.data,
         ...orderList.filter((order) => order._id !== id),
       ]);
       // setOrderList(orderList.filter((order) => order._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const orderDeleteHandler = async (id: number) => {
+    try {
+      const res = await axios.delete("http://localhost:3000/api/orders/" + id);
+      setOrderList(orderList.filter((order) => order._id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -104,7 +115,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
             </tr>
           </tbody>
           {orderList.map((order) => {
-            console.log(order.status + " " + order._id)
+            // console.log(order.status + " " + order._id)
             return (
               <tbody key={order._id}>
                 <tr className={styles.trTitle}>
@@ -116,8 +127,13 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
                   </td>
                   <td>{status[order.status]}</td>
                   <td>
-                    <button onClick={() => handleStatus(order._id)}>
+                    <button className={styles.BtnStatus} onClick={() => handleStatus(order._id)}>
                       Next stage
+                    </button>
+                  </td>
+                  <td>
+                    <button className={styles.BtnDelete} onClick={() => orderDeleteHandler(order._id)}>
+                      Delete
                     </button>
                   </td>
                 </tr>

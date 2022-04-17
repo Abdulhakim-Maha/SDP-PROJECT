@@ -38,42 +38,24 @@
         color: black;
       }
     }
-    input {
+    .input {
       padding: 15px;
       outline: none;
-      &:invalid[data-firstfocused="true"] {
-        border: 1px solid red;
+      border-radius: 2px;
+      border: 1px solid grey;
+      &.invalid {
+        border-color: red;
+        background-color: rgb(252, 187, 187);
       }
-      &:invalid[data-firstfocused="true"] ~ span.first {
-        display: block;
-      }
-      &:invalid[data-lastfocused="true"] {
-        border: 1px solid red;
-      }
-      &:invalid[data-lastfocused="true"] ~ span.last {
-        display: block;
-      }
-      &:invalid[data-phonefocused="true"] {
-        border: 1px solid red;
-      }
-      &:invalid[data-phonefocused="true"] ~ span.phone {
-        display: block;
+
+      &:focus {
+        background-color: rgb(166, 197, 197);
+        outline: none;
+        border-color: rgb(3, 81, 81);
       }
     }
-    .first {
-      margin-top: 1px;
+    .error {
       color: red;
-      display: none;
-    }
-    .last {
-      margin-top: 1px;
-      color: red;
-      display: none;
-    }
-    .phone {
-      margin-top: 1px;
-      color: red;
-      display: none;
     }
 
     .title {
@@ -84,9 +66,21 @@
       flex-direction: column;
       width: 100%;
       margin-bottom: 15px;
-      .textarea{
+      .textarea {
         padding: 10px;
         outline: none;
+        &:focus {
+          background-color: rgb(166, 197, 197);
+          outline: none;
+          border-color: rgb(3, 81, 81);
+        }
+        &.invalid {
+          border-color: red;
+          background-color: rgb(252, 187, 187);
+        }
+      }
+      .error {
+        color: red;
       }
       .label {
         margin-bottom: 10px;
@@ -112,5 +106,19 @@
         background-color: rgba(195, 191, 191, 0.5);
       }
     }
+  }
+  .close {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: -10px;
   }
 }

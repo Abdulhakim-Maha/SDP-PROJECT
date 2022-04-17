@@ -1,5 +1,6 @@
 import Image from "next/image";
 import axios from "axios";
+import Head from "next/head";
 import { GetServerSideProps } from "next";
 import React, { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
 import style from "../../styles/Product.module.scss";
@@ -53,6 +54,9 @@ const ID: React.FC<{ chick: CHICK }> = ({ chick }) => {
 
   return (
     <div className={style.container}>
+      <Head>
+        <title>Product</title>
+      </Head>
       <div className={style.left}>
         <div className={style.imgContainer}>
           <Image src={chick.img} layout="fill" objectFit="contain" />
@@ -101,7 +105,7 @@ const ID: React.FC<{ chick: CHICK }> = ({ chick }) => {
             defaultValue={1}
             className={style.quantity}
           />
-          <button className={style.button} onClick={handleClick}>
+          <button className={style.button} id='add-to-cart' onClick={handleClick}>
             เพิ่มใส่ตะกร้า
           </button>
         </div>

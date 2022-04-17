@@ -1,20 +1,30 @@
 import style from "../styles/Menu.module.scss";
 import React, { useState } from "react";
 import ChickCard from "../components/ChickCard";
-import ChickList from "../components/ChickList";
 import CHICK from '../util/Chick'
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import AddButton from "../components/AddButton";
 import Add from "../components/Add";
+import Head from "next/head";
 
-const Index: React.FC<{ chickList: CHICK[]; admin: boolean }> = (props) => {
+const Index: React.FC<{ chickList: Array<CHICK>; admin: boolean }> = ({ chickList, admin }) => {
   const [close, setClose] = useState<boolean>(true);
+  console.log(chickList)
   return (
     <div className={style.container}>
-      {props.admin && <AddButton setClose={setClose}/>}
-      <ChickList chickList={props.chickList} />
-      {!close && <Add setClose={setClose}/>}
+      <Head>
+        <title>Menu</title>
+      </Head>
+      {/* <ChickList chickList={props.chickList} /> */}
+      {admin && <AddButton setClose={setClose} />}
+      <div className={style.wrapper}>
+        {chickList.map((chick) => {
+          console.log(chick)
+          return <ChickCard key={chick._id} chick={chick} />;
+        })}
+      </div>
+      {!close && <Add setClose={setClose} />}
     </div>
   );
 };
