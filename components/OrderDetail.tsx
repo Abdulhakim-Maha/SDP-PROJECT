@@ -20,7 +20,7 @@ const OrderDetail: React.FC<{
   } = useInput(
     (value) =>
       name_regex.test(value.trim()) &&
-      value.length <= 10 &&
+      value.length <= 30 &&
       !/\d/.test(value.trim())
   );
 
@@ -33,7 +33,7 @@ const OrderDetail: React.FC<{
   } = useInput(
     (value) =>
       name_regex.test(value.trim()) &&
-      value.length <= 10 &&
+      value.length <= 30 &&
       !/\d/.test(value.trim())
   );
 
