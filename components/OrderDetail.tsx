@@ -22,7 +22,8 @@ const OrderDetail: React.FC<{
       name_regex.test(value.trim()) &&
       value.length <= 30 &&
       !/\d/.test(value.trim()) &&
-      !/[๑-๛]/.test(value.trim())
+      !/[๑-๛]/.test(value.trim()) &&
+      !/\W/.test(value.trim())
   );
 
   const {
@@ -36,7 +37,8 @@ const OrderDetail: React.FC<{
       name_regex.test(value.trim()) &&
       value.length <= 30 &&
       !/\d/.test(value.trim()) &&
-      !/[๑-๛]/.test(value.trim())
+      !/[๑-๛]/.test(value.trim()) &&
+      !/\W/.test(value.trim())
   );
 
   const {
@@ -53,7 +55,7 @@ const OrderDetail: React.FC<{
     isValid: enteredAddressIsValid,
     valueBlurHandler: addressBlurHandler,
     valueChangeHandler: addressChangeHandler,
-  } = useInput((value) => add_regex.test(value.trim()));
+  } = useInput((value) => add_regex.test(value.trim()) && value.length <= 200);
 
   const firstnameInputClass = firstnameHasError
     ? `${styles.input} ${styles.invalid}`
@@ -165,7 +167,7 @@ const OrderDetail: React.FC<{
           {addressHasError && (
             <span className={styles.error}>
               ที่อยู่ต้องเป็นตัวเลขกับตัวอักษร ไม่เป็นตัวอักษรพิเศษ และมากกว่า 3
-              ขึ้นไป
+              และน้อยกว่า 200
             </span>
           )}
         </div>
