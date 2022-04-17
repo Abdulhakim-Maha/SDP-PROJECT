@@ -21,7 +21,8 @@ const OrderDetail: React.FC<{
     (value) =>
       name_regex.test(value.trim()) &&
       value.length <= 30 &&
-      !/\d/.test(value.trim())
+      !/\d/.test(value.trim()) &&
+      !/[๑-๛]/.test(value.trim())
   );
 
   const {
@@ -34,7 +35,8 @@ const OrderDetail: React.FC<{
     (value) =>
       name_regex.test(value.trim()) &&
       value.length <= 30 &&
-      !/\d/.test(value.trim())
+      !/\d/.test(value.trim()) &&
+      !/[๑-๛]/.test(value.trim())
   );
 
   const {
@@ -162,8 +164,8 @@ const OrderDetail: React.FC<{
           />
           {addressHasError && (
             <span className={styles.error}>
-              ที่อยู่ต้องเป็นตัวเลขกับตัวอักษร ไม่เป็นตัวอักษรพิเศษ
-              และมากกว่า 3 ขึ้นไป
+              ที่อยู่ต้องเป็นตัวเลขกับตัวอักษร ไม่เป็นตัวอักษรพิเศษ และมากกว่า 3
+              ขึ้นไป
             </span>
           )}
         </div>
