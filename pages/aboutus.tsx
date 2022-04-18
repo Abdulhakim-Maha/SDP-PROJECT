@@ -21,7 +21,7 @@ const members = [
   },
   {
     img: "/members/fome.png",
-    name: "Phurich Janprasit",
+    name: "Phurich Chanprasit",
     id: 63010767,
   },
   {
