@@ -28,5 +28,11 @@
       margin: 10px 0;
       text-transform: uppercase;
     }
+    .github{
+      margin-top: 5px;
+      &:hover{
+        color:crimson;
+      }
+    }
   }
 }
