@@ -23,7 +23,7 @@ const OrderDetail: React.FC<{
       value.length <= 30 &&
       !/\d/.test(value.trim()) &&
       !/[๑-๛]/.test(value.trim()) &&
-      !/[$&+,:;=?@#|'<>.-^*()%!]/.test(value.trim())
+      !/[$&+,:;=?@#|'<>.\-^*()%!]/.test(value.trim())
   );
 
   const {
@@ -38,7 +38,7 @@ const OrderDetail: React.FC<{
       value.length <= 30 &&
       !/\d/.test(value.trim()) &&
       !/[๑-๛]/.test(value.trim()) &&
-      !/[$&+,:;=?@#|'<>.-^*()%!]/.test(value.trim())
+      !/[$&+,:;=?@#|'<>.\-^*()%!]/.test(value.trim())
   );
 
   const {

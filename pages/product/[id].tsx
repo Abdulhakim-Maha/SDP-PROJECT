@@ -59,7 +59,7 @@ const ID: React.FC<{ chick: CHICK }> = ({ chick }) => {
       </Head>
       <div className={style.left}>
         <div className={style.imgContainer}>
-          <Image src={chick.img} layout="fill" objectFit="contain" />
+          <Image src={chick.img} layout="fill" objectFit="contain" className={style.img} />
         </div>
       </div>
       <div className={style.right}>
@@ -69,15 +69,15 @@ const ID: React.FC<{ chick: CHICK }> = ({ chick }) => {
         <h3 className={style.choose}>Choose your size</h3>
         <div className={style.sizes}>
           <div className={style.size} onClick={() => handleSize(0)}>
-            <Image src={"/img/size.png"} layout="fill" />
+            <Image src={"/img/chicken.png"} layout="fill" />
             <span className={style.number}>Small</span>
           </div>
           <div className={style.size} onClick={() => handleSize(1)}>
-            <Image src={"/img/size.png"} layout="fill" />
+            <Image src={"/img/chicken.png"} layout="fill" />
             <span className={style.number}>Medium</span>
           </div>
           <div className={style.size} onClick={() => handleSize(2)}>
-            <Image src={"/img/size.png"} layout="fill" />
+            <Image src={"/img/chicken.png"} layout="fill" />
             <span className={style.number}>Large</span>
           </div>
         </div>
