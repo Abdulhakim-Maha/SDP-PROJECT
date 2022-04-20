@@ -23,7 +23,8 @@ const OrderDetail: React.FC<{
       value.length <= 30 &&
       !/\d/.test(value.trim()) &&
       !/[๑-๛]/.test(value.trim()) &&
-      !/[$&+,:;=?@#|'<>.\-^*()%!]/.test(value.trim())
+      !/[$&+,:;=?@#|'<>.\-^*()%!]/.test(value.trim()) &&
+      !/[^a-zA-Zก-ํ]/.test(value.trim())
   );
 
   const {
@@ -38,7 +39,8 @@ const OrderDetail: React.FC<{
       value.length <= 30 &&
       !/\d/.test(value.trim()) &&
       !/[๑-๛]/.test(value.trim()) &&
-      !/[$&+,:;=?@#|'<>.\-^*()%!]/.test(value.trim())
+      !/[$&+,:;=?@#|'<>.\-^*()%!]/.test(value.trim()) &&
+      !/[^a-zA-Zก-ํ]/.test(value.trim())
   );
 
   const {
@@ -55,7 +57,12 @@ const OrderDetail: React.FC<{
     isValid: enteredAddressIsValid,
     valueBlurHandler: addressBlurHandler,
     valueChangeHandler: addressChangeHandler,
-  } = useInput((value) => add_regex.test(value.trim()) && value.length <= 200);
+  } = useInput(
+    (value) =>
+      add_regex.test(value.trim()) &&
+      value.length <= 200 &&
+      !/[^a-zA-Zก-ํ0-9.,/ ]/.test(value.trim())
+  );
 
   const firstnameInputClass = firstnameHasError
     ? `${styles.input} ${styles.invalid}`

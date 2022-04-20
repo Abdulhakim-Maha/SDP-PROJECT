@@ -10,7 +10,7 @@ import Head from "next/head";
 
 const Index: React.FC<{ chickList: Array<CHICK>; admin: boolean }> = ({ chickList, admin }) => {
   const [close, setClose] = useState<boolean>(true);
-  console.log(chickList)
+  // console.log(chickList)
   return (
     <div className={style.container}>
       <Head>
@@ -20,7 +20,7 @@ const Index: React.FC<{ chickList: Array<CHICK>; admin: boolean }> = ({ chickLis
       {admin && <AddButton setClose={setClose} />}
       <div className={style.wrapper}>
         {chickList.map((chick) => {
-          console.log(chick)
+          // console.log(chick)
           return <ChickCard key={chick._id} chick={chick} />;
         })}
       </div>
