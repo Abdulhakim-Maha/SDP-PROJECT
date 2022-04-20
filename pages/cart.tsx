@@ -28,6 +28,7 @@ const Cart = () => {
 
   const createOrder = async (data: any) => {
     try {
+      // console.log(data);
       const res = await axios.post("http://localhost:3000/api/orders", data);
       console.log(res.data._id);
       res.status === 201 && router.push("/orders/" + res.data._id);
@@ -84,7 +85,7 @@ const Cart = () => {
               createOrder({
                 customer: shipping?.name.full_name,
                 address: shipping?.address.address_line_1,
-                total: cart.total,
+                total: cart.total + 10,
                 method: 1,
               });
             });
@@ -97,7 +98,7 @@ const Cart = () => {
   return (
     <div className={styles.container}>
       <head>
-      <title>Cart</title>
+        <title>Cart</title>
       </head>
       <div className={styles.left}>
         <table className={styles.table}>
@@ -156,15 +157,18 @@ const Cart = () => {
         <div className={styles.wrapper}>
           <h2 className={styles.title}>รายการสั่งซื้อ</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>
-            {cart.total} บาท
+            <b className={styles.totalTextTitle}>ราคาสั่งซื้อ:</b>
+            {cart.total.toFixed(2)} บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>0.00 บาท
+            <b className={styles.totalTextTitle}>ลดราคา:</b>0.00 บาท
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>
-            {cart.total} บาท
+            <b className={styles.totalTextTitle}>ค่าส่ง:</b>10.00 บาท
+          </div>
+          <div className={styles.totalText}>
+            <b className={styles.totalTextTitle}>ยอดสุทธิ:</b>
+            {(cart.total + 10).toFixed(2)} บาท
           </div>
           {open ? (
             <div className={styles.paymentMethods}>
@@ -200,7 +204,7 @@ const Cart = () => {
       {cash && (
         <OrderDetail
           setCash={setCash}
-          total={cart.total}
+          total={cart.total + 10}
           createOrder={createOrder}
         />
       )}

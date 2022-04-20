@@ -14,6 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } else if (method === "POST") {
     try {
+      console.log(req.body)
       const order = await Order.create(req.body);
       // console.log(order)
       res.status(201).json(order);

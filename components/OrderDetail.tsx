@@ -82,9 +82,15 @@ const OrderDetail: React.FC<{
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    const customer = enteredFirstname + enterredLastname;
+    const customer = enteredFirstname + " " + enterredLastname;
     console.log(customer, enteredPhone, enteredAddress);
-    createOrder({ customer, address: enteredAddress, total, method: 0 });
+    createOrder({
+      customer,
+      address: enteredAddress,
+      total,
+      phone: enteredPhone,
+      method: 0,
+    });
   };
 
   return (

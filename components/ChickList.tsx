@@ -1,7 +1,7 @@
 import style from "../styles/ChickList.module.scss";
 import React from "react";
 import ChickCard from "./ChickCard";
-import CHICK from '../util/Chick'
+import CHICK from "../util/Chick";
 
 const ChickList: React.FC<{ chickList: Array<CHICK> }> = ({ chickList }) => {
   // console.log(chickList);
@@ -18,10 +18,21 @@ const ChickList: React.FC<{ chickList: Array<CHICK> }> = ({ chickList }) => {
       <br/>โอกาศหน้าอย่าลืมนะครับ ไก่ทอดแท้ๆที่เราทำจากยางไก่ทอดจริงๆนะครับ
       </p> */}
       <div className={style.wrapper}>
-        {chickList.slice(0,3).map((chick) => {
+        {chickList
+          .filter(
+            (chicken) =>
+              chicken._id.toString() === "625fb3016ed0c53f90506d03" ||
+              chicken._id.toString() === "625fb3c16ed0c53f90506d6e" ||
+              chicken._id.toString() === "625fb4476ed0c53f90506da9"
+          )
+          .map((chick) => {
+            // console.log(chick)
+            return <ChickCard key={chick._id} chick={chick} />;
+          })}
+        {/* {chickList.slice(0,3).map((chick) => {
           // console.log(chick)
           return <ChickCard key={chick._id} chick={chick} />;
-        })}
+        })} */}
       </div>
     </div>
   );

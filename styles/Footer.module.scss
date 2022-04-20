@@ -7,7 +7,10 @@
     flex: 1;
     display: flex;
     position: relative;
-
+    .img{
+      opacity: 0.8;
+      filter: blur(1.5px);
+    }
     &:last-child {
       flex: 2;
 	  padding: 50px;

@@ -5,6 +5,7 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 import PRODUCT from "../../util/Chick";
 import { ORDER_V2 } from "../orders/[id]";
+import Head from "next/head";
 
 const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   orders,
@@ -12,7 +13,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
 }) => {
   const [chickList, setChickList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
-  const status: string[] = ["preparing", "on the way", "delivered"];
+  const status: string[] = ["preparing", "on the way", "delivered", "done"];
 
   const handleDelete = async (id: number) => {
     try {
@@ -30,7 +31,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
     const currentStatus = item.status;
     try {
       let updatedStatus = 0;
-      if (currentStatus < 2) {
+      if (currentStatus < 3) {
         updatedStatus = currentStatus + 1;
       } else {
         updatedStatus = 0;
@@ -59,6 +60,9 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Manage</title>
+      </Head>
       <div className={styles.item}>
         <div className={styles.title}>Products</div>
         <table className={styles.table}>
@@ -109,6 +113,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
             <tr className={styles.trTitle}>
               <th>Id</th>
               <th>Customer</th>
+              <th>Tel</th>
               <th>Total</th>
               <th>Payment</th>
               <th>Action</th>
@@ -121,18 +126,25 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
                 <tr className={styles.trTitle}>
                   <td>{order._id.toString().slice(0, 5)}...</td>
                   <td>{order.customer}</td>
+                  <td>{order.phone}</td>
                   <td>{order.total}</td>
                   <td>
                     {order.method === 0 ? <span>cash</span> : <span>paid</span>}
                   </td>
                   <td>{status[order.status]}</td>
                   <td>
-                    <button className={styles.BtnStatus} onClick={() => handleStatus(order._id)}>
+                    <button
+                      className={styles.BtnStatus}
+                      onClick={() => handleStatus(order._id)}
+                    >
                       Next stage
                     </button>
                   </td>
                   <td>
-                    <button className={styles.BtnDelete} onClick={() => orderDeleteHandler(order._id)}>
+                    <button
+                      className={styles.BtnDelete}
+                      onClick={() => orderDeleteHandler(order._id)}
+                    >
                       Delete
                     </button>
                   </td>

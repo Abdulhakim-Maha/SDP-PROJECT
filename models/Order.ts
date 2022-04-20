@@ -11,6 +11,7 @@ export interface ORDER {
   total: number;
   status: number;
   method: number;
+  phone: String;
 }
 
 const OrderSchema = new Schema<ORDER>(
@@ -27,6 +28,10 @@ const OrderSchema = new Schema<ORDER>(
     },
     total: {
       type: Number,
+      required: true,
+    },
+    phone:{
+      type: String,
       required: true,
     },
     status: {
