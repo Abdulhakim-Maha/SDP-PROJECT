@@ -6,6 +6,7 @@ import { GetServerSideProps } from "next";
 import PRODUCT from "../../util/Chick";
 import { ORDER_V2 } from "../orders/[id]";
 import Head from "next/head";
+import Edit from "../../components/Edit";
 
 const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   orders,
@@ -14,6 +15,8 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   const [chickList, setChickList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
   const status: string[] = ["preparing", "on the way", "delivered", "done"];
+  const [openEdit, setOpenEdit] = useState(false);
+  const [editProduct, setEditProduct] = useState<PRODUCT | null>(null);
 
   const handleDelete = async (id: number) => {
     try {
@@ -57,6 +60,10 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
       console.log(error);
     }
   };
+  const editHandler = (p: PRODUCT) => {
+    setOpenEdit(true);
+    setEditProduct(p);
+  };
 
   return (
     <div className={styles.container}>
@@ -92,7 +99,12 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
                   <td>{product.title}</td>
                   <td>{product.prices[0]}</td>
                   <td>
-                    <button className={styles.button}>Edit</button>
+                    <button
+                      className={styles.button}
+                      onClick={() => editHandler(product)}
+                    >
+                      Edit
+                    </button>
                     <button
                       className={styles.button}
                       onClick={() => handleDelete(product._id)}
@@ -154,6 +166,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
           })}
         </table>
       </div>
+      {openEdit && <Edit setOpenEdit={setOpenEdit} product={editProduct!} />}
     </div>
   );
 };
