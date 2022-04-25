@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import styles from "../styles/Edit.module.scss";
 import { AiFillCloseCircle } from "react-icons/ai";
 import PRODUCT from "../util/Chick";
+import axios from "axios";
 
 const Edit: FC<{
   setOpenEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,6 +37,8 @@ const Edit: FC<{
   //   currenPrices[i] = +e.target.value;
   //   setPrices(currenPrices);
   // };
+  // console.log(extraOptions);
+  // console.log(options[0]);
 
   const handleExtraInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log({ ...extra, [e.target.name]: e.target.value });
@@ -45,6 +48,34 @@ const Edit: FC<{
     setExtraOptions((prev) => [...prev, extra]);
   };
 
+  const updateHandler = async () => {
+    const prices = [price0, price1, price2];
+    // console.log(prices);
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "uploads");
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/helloworldeiei/image/upload",
+        data
+      );
+      // console.log(uploadRes.data);
+      const { url } = uploadRes.data;
+      const newProduct = {
+        title,
+        desc,
+        prices,
+        extraOptions,
+        img: url,
+        _id: product._id,
+      };
+      // console.log(newProduct);
+      await axios.put("http://localhost:3000/api/products", newProduct);
+      setOpenEdit(false)
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // console.log(price0, price1, price2);
   // console.log(product.extraOptions);
   return (
@@ -62,7 +93,11 @@ const Edit: FC<{
             <label htmlFor="" className={styles.label}>
               Choose an image
             </label>
-            <input type="file" className={styles.input} />
+            <input
+              type="file"
+              onChange={(e) => setFile(e.target.files![0])}
+              className={styles.input}
+            />
           </div>
           <div className={styles.item}>
             <label htmlFor="" className={styles.label}>
@@ -122,7 +157,7 @@ const Edit: FC<{
           <div className={styles.item}>
             <div className={styles.wrap}>
               <label htmlFor="" className={styles.label}>
-                Extra
+                Extra    <b className={styles.b}>Please Re-enter all ingredients !!!</b>
               </label>
               {options.map((op) => {
                 return (
@@ -131,6 +166,7 @@ const Edit: FC<{
                       type="text"
                       value={op.text}
                       className={styles.text}
+                      // onChange={e => setOptions({...options})}
                     />
                     <input
                       type="number"
@@ -177,7 +213,9 @@ const Edit: FC<{
             </div>
           </div>
         </div>
-        <button className={styles.addButton}>Create</button>
+        <button className={styles.addButton} onClick={updateHandler}>
+          Create
+        </button>
       </div>
     </div>
   );

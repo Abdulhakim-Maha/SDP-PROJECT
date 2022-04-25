@@ -2,6 +2,7 @@ import styles from "../../styles/Admin.module.scss";
 import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 import { GetServerSideProps } from "next";
 import PRODUCT from "../../util/Chick";
 import { ORDER_V2 } from "../orders/[id]";
@@ -87,13 +88,16 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
               <tbody key={product._id}>
                 <tr className={styles.trTitle}>
                   <td>
-                    <Image
-                      src={product.img}
-                      width={50}
-                      height={50}
-                      objectFit="cover"
-                      alt=""
-                    />
+                    <Link href={`/product/${product._id}`}>
+                      <Image
+                        src={product.img}
+                        width={50}
+                        height={50}
+                        objectFit="cover"
+                        alt=""
+                        style={{'cursor':'pointer'}}
+                      />
+                    </Link>
                   </td>
                   <td>{product._id.toString().slice(0, 5)}...</td>
                   <td>{product.title}</td>
