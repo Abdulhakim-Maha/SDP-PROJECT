@@ -9,11 +9,7 @@ enum CHOICE {
 
 const Featured = () => {
   const [index, setIndex] = useState<number>(0);
-  const images: Array<string> = [
-    "/img/FC1w.png",
-    "/img/FC2w.png",
-    "/img/FC3w.png",
-  ];
+  const images: Array<string> = ["/img/F2.png", "/img/F3.png", "/img/F4.png"];
 
   const handleArrow = (c: CHOICE) => {
     if (c === CHOICE.LEFT) {
@@ -30,7 +26,13 @@ const Featured = () => {
         style={{ left: 0 }}
         onClick={() => handleArrow(CHOICE.LEFT)}
       >
-        <Image src={"/img/arrowl.png"} layout="fill" objectFit="contain" />
+        <Image
+          src={"/img/arrowl.png"}
+          width="100vw"
+          height="100vh"
+          layout="responsive"
+          objectFit="contain"
+        />
       </div>
       <div
         className={style.wrapper}
