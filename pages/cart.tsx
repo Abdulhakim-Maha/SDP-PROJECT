@@ -31,7 +31,7 @@ const Cart = () => {
       // console.log(data);
       const res = await axios.post("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders", data);
       // console.log(res.data._id);
-      res.status === 201 && router.push("/https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/orders/" + res.data._id);
+      res.status === 201 && router.push("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/orders/" + res.data._id);
       dispatch(reset());
     } catch (err) {
       console.log(err);
