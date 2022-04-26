@@ -22,7 +22,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   const handleDelete = async (id: number) => {
     try {
       const res = await axios.delete(
-        "https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/products/" + id
+        "/api/products/" + id
       );
       setChickList(chickList.filter((chick) => chick._id !== id));
     } catch (error) {
@@ -40,7 +40,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
       } else {
         updatedStatus = 0;
       }
-      const res = await axios.put("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders/" + id, {
+      const res = await axios.put("/api/orders/" + id, {
         status: updatedStatus,
       });
       setOrderList([
@@ -55,7 +55,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
 
   const orderDeleteHandler = async (id: number) => {
     try {
-      const res = await axios.delete("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders/" + id);
+      const res = await axios.delete("/api/orders/" + id);
       setOrderList(orderList.filter((order) => order._id !== id));
     } catch (error) {
       console.log(error);

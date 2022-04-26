@@ -43,7 +43,7 @@ const Add: React.FC<{ setClose: Dispatch<SetStateAction<boolean>> }> = ({
         extraOptions,
         img: url,
       };
-      await axios.post("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/products", newProduct);
+      await axios.post("/api/products", newProduct);
       setClose(true);
     } catch (error) {
       console.log(error);
