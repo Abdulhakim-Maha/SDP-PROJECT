@@ -7,8 +7,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     // console.log(username, password)
     // console.log(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD)
     if (
-      username === process.env.ADMIN_USERNAME &&
-      password === process.env.ADMIN_PASSWORD
+      username === 'admin' &&
+      password === 'admin'
     ) {
       res.setHeader(
         "set-Cookie",
