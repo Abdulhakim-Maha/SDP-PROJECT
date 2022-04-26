@@ -29,7 +29,7 @@ const Cart = () => {
   const createOrder = async (data: any) => {
     try {
       // console.log(data);
-      const res = await axios.post("http://localhost:3000/api/orders", data);
+      const res = await axios.post("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders", data);
       // console.log(res.data._id);
       res.status === 201 && router.push("/orders/" + res.data._id);
       dispatch(reset());
@@ -97,9 +97,9 @@ const Cart = () => {
 
   return (
     <div className={styles.container}>
-      <head>
+      <Head>
         <title>Cart</title>
-      </head>
+      </Head>
       <div className={styles.left}>
         <table className={styles.table}>
           <tbody>

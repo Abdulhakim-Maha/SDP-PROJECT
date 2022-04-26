@@ -70,7 +70,7 @@ const Edit: FC<{
         _id: product._id,
       };
       // console.log(newProduct);
-      await axios.put("http://localhost:3000/api/products", newProduct);
+      await axios.put("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/products", newProduct);
       setOpenEdit(false)
     } catch (error) {
       console.log(error);

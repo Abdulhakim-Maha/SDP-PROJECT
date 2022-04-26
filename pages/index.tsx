@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { GetServerSideProps } from "next";
-import Image from "next/image";
 import Featured from "../components/Featured";
 import ChickList from "../components/ChickList";
 import styles from "../styles/Home.module.scss";
@@ -37,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (myCookie.token === process.env.TOKEN) {
     admin = true;
   }
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/products");
   // console.log(res.data);
   return {
     props: {

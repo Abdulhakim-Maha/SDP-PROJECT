@@ -22,7 +22,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   const handleDelete = async (id: number) => {
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        "https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/products/" + id
       );
       setChickList(chickList.filter((chick) => chick._id !== id));
     } catch (error) {
@@ -40,7 +40,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
       } else {
         updatedStatus = 0;
       }
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+      const res = await axios.put("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders/" + id, {
         status: updatedStatus,
       });
       setOrderList([
@@ -55,7 +55,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
 
   const orderDeleteHandler = async (id: number) => {
     try {
-      const res = await axios.delete("http://localhost:3000/api/orders/" + id);
+      const res = await axios.delete("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders/" + id);
       setOrderList(orderList.filter((order) => order._id !== id));
     } catch (error) {
       console.log(error);
@@ -186,8 +186,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/products");
+  const orderRes = await axios.get("https://sdp-project-rm4nichqi-abdulhakim-maha.vercel.app/api/orders");
 
   return {
     props: {
