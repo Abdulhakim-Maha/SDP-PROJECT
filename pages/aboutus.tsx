@@ -48,6 +48,7 @@ const Aboutus = () => {
     <div>
       <Head>
         <title>About Us</title>
+        <link rel="icon" href="/img/chicken.png" />
       </Head>
       <div className={styles.container}>
         <div className={styles.wrapper}>

@@ -9,7 +9,7 @@ enum CHOICE {
 
 const Featured = () => {
   const [index, setIndex] = useState<number>(0);
-  const images: Array<string> = ["/img/F2.png", "/img/F3.png", "/img/F4.png"];
+  const images: Array<string> = ["/img/F5.png", "/img/F6.png", "/img/F7.png"];
 
   const handleArrow = (c: CHOICE) => {
     if (c === CHOICE.LEFT) {
