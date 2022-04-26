@@ -1,12 +1,12 @@
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/orders",
-        destination: "https://sdp-project.vercel.app/api/orders",
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/api/orders",
+  //       destination: "https://sdp-project.vercel.app/api/orders",
+  //     },
+  //   ];
+  // },
   images: {
     domains: [
       "res.cloudinary.com",
