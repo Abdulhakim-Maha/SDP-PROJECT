@@ -17,7 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } else if (method == "POST") {
     if (!token || token !== process.env.TOKEN) {
-      return res.status(401).json('Not authenticated!');
+      return res.status(401).json("Not authenticated!");
     }
     try {
       //   console.log(req.body);
@@ -28,6 +28,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(201).json(product);
     } catch (err) {
       res.status(500).json("there is some error occurs!\n" + err);
+    }
+  } else if (method == "PUT") {
+    console.log("hit");
+    // if (!token || token !== process.env.TOKEN) {
+    //   return res.status(401).json("Not authenticated!");
+    // }
+    try {
+      const { _id, ...other } = req.body;
+      const update = await Product.findByIdAndUpdate(_id, other, {
+        overwrite: true,
+      });
+      res.status(200).json(update);
+    } catch (error) {
+      console.log(error);
     }
   }
 };

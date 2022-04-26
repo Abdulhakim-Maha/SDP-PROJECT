@@ -2,10 +2,12 @@ import styles from "../../styles/Admin.module.scss";
 import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 import { GetServerSideProps } from "next";
 import PRODUCT from "../../util/Chick";
 import { ORDER_V2 } from "../orders/[id]";
 import Head from "next/head";
+import Edit from "../../components/Edit";
 
 const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   orders,
@@ -14,6 +16,8 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
   const [chickList, setChickList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
   const status: string[] = ["preparing", "on the way", "delivered", "done"];
+  const [openEdit, setOpenEdit] = useState(false);
+  const [editProduct, setEditProduct] = useState<PRODUCT | null>(null);
 
   const handleDelete = async (id: number) => {
     try {
@@ -57,6 +61,10 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
       console.log(error);
     }
   };
+  const editHandler = (p: PRODUCT) => {
+    setOpenEdit(true);
+    setEditProduct(p);
+  };
 
   return (
     <div className={styles.container}>
@@ -80,19 +88,27 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
               <tbody key={product._id}>
                 <tr className={styles.trTitle}>
                   <td>
-                    <Image
-                      src={product.img}
-                      width={50}
-                      height={50}
-                      objectFit="cover"
-                      alt=""
-                    />
+                    <Link href={`/product/${product._id}`}>
+                      <Image
+                        src={product.img}
+                        width={50}
+                        height={50}
+                        objectFit="cover"
+                        alt=""
+                        style={{'cursor':'pointer'}}
+                      />
+                    </Link>
                   </td>
                   <td>{product._id.toString().slice(0, 5)}...</td>
                   <td>{product.title}</td>
                   <td>{product.prices[0]}</td>
                   <td>
-                    <button className={styles.button}>Edit</button>
+                    <button
+                      className={styles.button}
+                      onClick={() => editHandler(product)}
+                    >
+                      Edit
+                    </button>
                     <button
                       className={styles.button}
                       onClick={() => handleDelete(product._id)}
@@ -154,6 +170,7 @@ const Index: React.FC<{ products: PRODUCT[]; orders: ORDER_V2[] }> = ({
           })}
         </table>
       </div>
+      {openEdit && <Edit setOpenEdit={setOpenEdit} product={editProduct!} />}
     </div>
   );
 };

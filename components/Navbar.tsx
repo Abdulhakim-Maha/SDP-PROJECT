@@ -9,24 +9,14 @@ const Navbar = () => {
   return (
     <div className={style.container}>
       <div className={style.item}>
-        <div className={style.callButton}>
-          <Image src={"/img/telephone.png"} width={"32"} height={"32"} alt="" />
-        </div>
-        <div className={style.texts}>
-          <div className={style.text}>สั่งเลย !</div>
-          <div className={style.text}>012 345 678</div>
-        </div>
-      </div>
-      <div className={style.item}>
         <ul className={style.list}>
+          <Image src={"/img/FC-logo.png"} alt="" width={"150"} height={"150"} />
           <Link href={'/'}>
             <li className={style.listItem}>หน้าหลัก</li>
           </Link>
           <Link href={'/menu'}>
             <li className={style.listItem}>ไก่ทอด</li>
           </Link>
-          <Image src={"/img/FC-logo.png"} alt="" width={"150"} height={"150"} />
-          <li className={style.listItem}>บล็อก</li>
           <Link href={'/aboutus'}>
             <li className={style.listItem}>ติดต่อพวกเรา</li>
           </Link>
