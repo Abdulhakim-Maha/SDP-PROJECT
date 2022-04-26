@@ -29,9 +29,9 @@ const Cart = () => {
   const createOrder = async (data: any) => {
     try {
       // console.log(data);
-      const res = await axios.post("/api/orders", data);
+      const res = await axios.post("https://sdp-project.vercel.app/api/orders", data);
       // console.log(res.data._id);
-      res.status === 201 && router.push("/orders/" + res.data._id);
+      res.status === 201 && router.push("https://sdp-project.vercel.app/orders/" + res.data._id);
       dispatch(reset());
     } catch (err) {
       console.log(err);

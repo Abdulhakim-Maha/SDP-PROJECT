@@ -122,7 +122,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as IdParams;
   // console.log(id);
 
-  const res = await axios.get(`/api/products/${id}`);
+  const res = await axios.get(`https://sdp-project.vercel.app/api/products/${id}`);
   return {
     props: {
       chick: res.data,

@@ -11,11 +11,11 @@ const Login = () => {
 
   const handleClick = async () => {
     try {
-      await axios.post("/api/login", {
+      await axios.post("https://sdp-project.vercel.app/api/login", {
         username,
         password,
       });
-      router.push("/admin");
+      router.push("https://sdp-project.vercel.app/admin");
     } catch (error) {
       setError(true);
     }

@@ -13,21 +13,6 @@ export interface ORDER_V2 extends ORDER {
 
 const Order: React.FC<{ order: ORDER_V2 }> = ({ order }) => {
   let status: number = order.status;
-  // console.log("id "+order._id)
-
-  // const loadStatus = async (id: number) => {
-  //   const orderRes = await axios.get(`http://localhost:3000/api/orders/${id}`);
-  //   console.log("status"+orderRes.data.status);
-  //   console.log(status !== orderRes.data)
-  //   if (status !== orderRes.data.status) {
-  //     console.log('yes')
-  //     status = orderRes.data.status
-  //   }
-  //   return orderRes.data.status
-  // }
-
-  // let updatedStatus = loadStatus(order._id)
-
   const statusClass = (index: number) => {
     if (index - status < 1) return styles.done;
     else if (index - status === 1) return styles.inProgress;
@@ -154,7 +139,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as IdParams;
   // console.log(id);
 
-  const res = await axios.get(`/api/orders/${id}`);
+  const res = await axios.get(`https://sdp-project.vercel.app/api/orders/${id}`);
   // console.log('res');
   return {
     props: {
