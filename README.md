@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SPD-PROJECT FRIED CHICKEN 4.0
 
-## Getting Started
+## Version 1.0.0 
 
-First, run the development server:
+โปรเจ็คชิ้นนี้เป็นส่วนหนึ่งของรายวิชา 01076008 SOFTWARE DEVELOPMENT PROCESSES ซึ่งเป็นเว็บไซต์รูปแบบ E-commerce ขนาดเล็ก
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Participants
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[PHURICH CHANPRASIT](https://github.com/Phurich63010767)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[WARAPOB KEATKONGSANG](https://github.com/Warapob)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[WATANAI MAYTHAMALUANG](https://github.com/Watanai1245)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[ABDULHAKIM MAHA](https://github.com/Abdulhakim-Maha)
 
-## Learn More
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[ABDULHAKIM MAMU](https://github.com/hakimparoo)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## View our website
+&nbsp;&nbsp;[click here !!!](https://sdp-project.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
+## License & copyright
 
-## Deploy on Vercel
+&copy; Fried Chicken 4.0
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
